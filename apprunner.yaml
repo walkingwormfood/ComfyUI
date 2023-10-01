@@ -1,0 +1,20 @@
+version: 1.0
+runtime: python3
+
+build:
+  commands:
+    pre-build:
+      - echo "Starting pre-build phase"
+    build:
+      - pip install -r requirements.txt
+    post-build:
+      - echo "Post-build phase completed"
+
+run:
+  runtime-version: 3.8
+  command: "python main.py --listen 0.0.0.0"
+  network:
+    port: 8188
+  env:
+    - name: CUDA_VISIBLE_DEVICES
+      value: "your_value_here"
